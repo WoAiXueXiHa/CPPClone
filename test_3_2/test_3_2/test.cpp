@@ -1,8 +1,8 @@
-#include <stdio.h>
+//#include <stdio.h>
 //// 加了这个头文件，为什么报错了？
 //// 理论上全局变量和局部变量可以同名，同名就遵循局部优先原则
 //// rand是stdlib库里的函数名，我们命名与这个函数同名，引发错误
-#include <stdlib.h>
+//#include <stdlib.h>
 //int rand = 10;
 //int main() {
 //	int rand = 1;
@@ -14,7 +14,7 @@
 //	//fuction type variable
 //}
 //cpp的头文件 io流
-#include <iostream>
+//#include <iostream>
 
 //// 例如
 //namespace vect{
@@ -101,15 +101,91 @@
 //}
 
 // 展开命名空间全部成员
-namespace bit {
-	int val = 1;
-	int num = 30;
-}
-using namespace bit;
+//namespace bit {
+//	int val = 1;
+//	int num = 30;
+//}
+//using namespace bit;
+//
+//int main() {
+//
+//	printf("%d\n", num);
+//	printf("%d\n", val);
+//	return 0;
+//}
 
+
+// 第一个CPP程序 
+#include <iostream> // io流
+using namespace std;// 展开std标准库
+
+//int main() {
+//	cout << "HELLO,CS!" << endl; // << 输出符 可自动匹配类型
+//	return 0;
+//}
+
+// 输入几个数据并打印
+
+//int main() {
+//	int a = 0;
+//	double b = 0;
+//	char c = 'm';
+//	string s = "hello";
+//
+//	// 可以自动识别类型
+//	cin >> a;
+//	cin >> b;
+//	cin >> c >> s;
+//
+//	cout << a << "\n" << b << "\n" << c << "  " << s;
+//
+//	return 0;
+//
+//}
+
+//// 缺省参数
+//void fuc(int a = 1) {
+//	cout << a << endl;
+//}
+//
+//int main() {
+//	fuc(); // 实参未传递实际的值 缺省参数 默认a == 1
+//	fuc(9);// 实参传递实际的值9 非缺省参数 a == 9
+//
+//	return 0;
+//}
+//
+//// 全缺省
+//void display1(int x = 9, string msg = "Hello", double ratio = 1.5) {
+//    cout << "x=" << x
+//         << ", msg=" << msg
+//         << ", ratio=" << ratio << endl;
+//}
+//// 半缺省 定义缺省参数 从右往左定义 不可以跳跃
+//void display2(int x, string msg, double ratio = 1.5) {
+//    cout << "x=" << x
+//        << ", msg=" << msg
+//        << ", ratio=" << ratio << endl;
+//}
+//int main() {
+//    // 传缺省参数 从左往右
+//    display1();
+//    display1(99);
+//    display1(99,"cs");
+//    display1(99,"cs",8.9);
+//
+//
+//    display2(1,"hahahaha");
+//    display2(1,"hahahaha",8.2);
+//
+//    return 0;
+//
+//}
+
+#include "decl.h"
+// 函数定义和声明分离时 必须在声明时给
 int main() {
-
-	printf("%d\n", num);
-	printf("%d\n", val);
-	return 0;
+	List* l;
+	ListInit(l);
+	HeadPush(l);
 }
