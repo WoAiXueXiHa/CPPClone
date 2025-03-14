@@ -181,11 +181,137 @@ using namespace std;// 展开std标准库
 //    return 0;
 //
 //}
+//
+//#include "decl.h"
+//// 函数定义和声明分离时 必须在声明时给
+//int main() {
+//	List* l;
+//	ListInit(l);
+//	HeadPush(l);
+//}
 
-#include "decl.h"
-// 函数定义和声明分离时 必须在声明时给
+
+//#include <iostream>
+//using namespace std;
+//// 函数重载：在CPP中，支持函数定义重名，但是要保证形参的类型、顺序或者个数不同
+//// 函数形参的名字不能作为判定条件
+//// 函数的返回值不能作为判定条件,调用时编译器也无法识别到底是哪个函数
+//
+//// 类型不同
+//int Add(int a, int b) {
+//	return a + b;
+//	cout << "Add(int a, int b)" << endl;
+//}
+//double Add(double a, double b) {
+//	cout << "Add(double a, double b)" << endl;
+//	return a + b;
+//}
+//
+//// 顺序不同
+//void fuc(int x, double y) {
+//	cout << "fuc(int x, double y)" << endl;
+//}
+//void fuc(double y, int x) {
+//	cout << "fuc(double y, int x)" << endl;
+//
+//}
+//
+//// 个数不同
+//void Print(char c, int x) {
+//	cout << "Print(char c, int x)" << endl;
+//}
+//void Print(char c) {
+//	cout << "Print(char c)" << endl;
+//}
+//
+//// 是函数重载，但是编译器不知道匹配谁 存在歧义
+//void f() {
+//	cout << "f()" << endl;
+//}
+//void f(int a = 2) {
+//	cout << "f(int a)" << endl;
+//}
+//int main() {
+//	Add(6, 7);
+//	Add(1.3, 8.1);
+//
+//	fuc(7, 8.6);
+//	fuc(8.6, 7);
+//
+//	Print('a',8);
+//	Print('a');
+//
+//	//f();
+//	//f(1);
+//
+//	return 0;
+//
+//}
+
+// &引用
+
+// 相当于给变量起别
+//int main() {
+//	int a = 0;
+//	int& b = a; 
+//	int& c = a;
+//	int& d = c;
+//
+//	d++;
+//
+//	//指针变量起别名
+//	int* pa = &a;
+//	int*& pb = pa;
+//	pb = NULL;
+//
+//	//引用一旦引用一个实体，再不能引用其他实体
+//	int x = 7;
+//	int& y = x;
+//	int z = 0;
+//	// 把z的值拷贝给y
+//	y = z;
+//	cout << z << " " << x << " " << y;
+//	return 0;
+//}
+
+// const修饰引用
 int main() {
-	List* l;
-	ListInit(l);
-	HeadPush(l);
+
+	const int a = 10;
+	// 权限放大，不可以 a只读 而b是可修改的
+	/*int& b = a;*/
+
+	// 权限平移
+	const int& b = a;
+
+	int x = 5;
+	//权限缩小 可以
+	const int& y = x;
+
+	int num = 45;
+	const int* pnum = &num;
+	// 权限平移
+	const int*& pr = pnum;
+	// 权限放大 不可以
+	/*int*& pq = pnum;*/
+
+	int* qnum = &num;
+	// 权限平移
+	int*& anum = qnum;
+	// 权限缩小 但是引用的 int* 与const int* 二者类型不匹配 不可以
+	/*const int*& bnum = qnum;*/
+	// CPP允许通过隐式转换创建新指针实现权限缩小
+	const int* bnum = qnum;
+
+	// 类型转换和表达式运算都会产生临时变量 总得有个值来存结果
+
+	double val1 = 1.2, val2 = 2.4;
+
+	const double& sum = val1 + val2;
+
+	int num1 = 5;
+	float f = num1; 
+
+	const float& ff = f;
+
 }
