@@ -274,44 +274,69 @@ using namespace std;// 展开std标准库
 //	return 0;
 //}
 
-// const修饰引用
-int main() {
+//// const修饰引用
+//int main() {
+//
+//	const int a = 10;
+//	// 权限放大，不可以 a只读 而b是可修改的
+//	/*int& b = a;*/
+//
+//	// 权限平移
+//	const int& b = a;
+//
+//	int x = 5;
+//	//权限缩小 可以
+//	const int& y = x;
+//
+//	int num = 45;
+//	const int* pnum = &num;
+//	// 权限平移
+//	const int*& pr = pnum;
+//	// 权限放大 不可以
+//	/*int*& pq = pnum;*/
+//
+//	int* qnum = &num;
+//	// 权限平移
+//	int*& anum = qnum;
+//	// 权限缩小 但是引用的 int* 与const int* 二者类型不匹配 不可以
+//	/*const int*& bnum = qnum;*/
+//	// CPP允许通过隐式转换创建新指针实现权限缩小
+//	const int* bnum = qnum;
+//
+//	// 类型转换和表达式运算都会产生临时变量 总得有个值来存结果
+//
+//	double val1 = 1.2, val2 = 2.4;
+//
+//	const double& sum = val1 + val2;
+//
+//	int num1 = 5;
+//	float f = num1; 
+//
+//	const float& ff = f;
+//
+//}
 
-	const int a = 10;
-	// 权限放大，不可以 a只读 而b是可修改的
-	/*int& b = a;*/
+//int main() {
+//	int a = 2;
+//	// 但底层二者都开辟空间
+//	int* pa = &a; // 语法上开辟新空间
+//	int& ia = a;  // 语法上不开辟空间
+//
+//	cout << "sizeof(int*):" << sizeof(int*) << " sizeof(int&):" << sizeof(int&);
+//}
 
-	// 权限平移
-	const int& b = a;
+// 内联函数 inline 定义和声明在一起，如果多文件分开，inline展开函数并不保存地址，链接时会出错
+//inline int Add(int a, int b) {
+//	return a + b;
+//}
+//
+//int main() {
+//	Add(2, 6);
+//
+//	return 0;
+//}
 
-	int x = 5;
-	//权限缩小 可以
-	const int& y = x;
-
-	int num = 45;
-	const int* pnum = &num;
-	// 权限平移
-	const int*& pr = pnum;
-	// 权限放大 不可以
-	/*int*& pq = pnum;*/
-
-	int* qnum = &num;
-	// 权限平移
-	int*& anum = qnum;
-	// 权限缩小 但是引用的 int* 与const int* 二者类型不匹配 不可以
-	/*const int*& bnum = qnum;*/
-	// CPP允许通过隐式转换创建新指针实现权限缩小
-	const int* bnum = qnum;
-
-	// 类型转换和表达式运算都会产生临时变量 总得有个值来存结果
-
-	double val1 = 1.2, val2 = 2.4;
-
-	const double& sum = val1 + val2;
-
-	int num1 = 5;
-	float f = num1; 
-
-	const float& ff = f;
-
+// NULL是一个宏 
+int mian() {
+	int* ptr = NULL;
 }
