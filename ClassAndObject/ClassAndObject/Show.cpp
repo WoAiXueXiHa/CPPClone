@@ -1,6 +1,6 @@
 #include "Show.h"
 // 函数定义
-void Stack::Init(int n = 4) {
+void Stack::Init(int n) {
 	_arr = (int*)malloc(sizeof(int) * n);
 	if (_arr == nullptr){
 		perror("申请空间失败");

@@ -1,8 +1,8 @@
 ﻿#include "Show.h"
 
-// class为类 是CPP的自定义类型
-// 定义一个栈
-// 函数定义和申明在同一个类域中
+//// class为类 是CPP的自定义类型
+//// 定义一个栈
+//// 函数定义和申明在同一个类域中
 //class Stack {
 //// 接口函数一般公开使用
 //public:
@@ -52,25 +52,30 @@
 //	size_t _capacity;
 //	int* arr;
 //};
-//
-//class Date {
-//public:
-//	void Today(int year, int month, int day) {
-//		int _year = year;
-//		int _month = month;
-//		int _day = day;
-//	}
-// void	Print(){
-//		cout << _year << "-" << _month << "-" << day;
-// 仅声明，并未开辟空间，实例化对象时才开辟空间
-//private:
-//	int _year;
-//	int _month;
-//	int _day;
-//};
+
+class Date {
+public:
+	void Today(int year, int month, int day) {
+		// C2106 “=” 左操作数必须为左值
+		/*this = nullptr;*/
+
+		//this->_year = year
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+	void Print() {
+		cout << _year << "-" << _month << "-" << _day<<"\n";
+	}
+ //仅声明，并未开辟空间，实例化对象时才开辟空间
+private:
+	int _year;
+	int _month;
+	int _day;
+};
 
 int main() {
-	// 不用typedef Stack就是一个类 而st是Stack这个类的实例化对象
+	 //不用typedef Stack就是一个类 而st是Stack这个类的实例化对象
 	/*Stack st;
 	st.Stack::Init(12);
 	st.Stack::Push(1);
@@ -80,9 +85,50 @@ int main() {
 
 	st.Stack::Destroy();*/
 
-	//Date d;
-	//d.Today(2024, 3, 17);
+	Date d1;
+	Date d2;
+
+	d1.Today(2024, 3, 17);
+	d1.Print();
+
+	d2.Today(2026, 3, 18);
+	d2.Print();
+
 
 	return 0;
 
 } 
+
+//// 计算⼀下A / B / C实例化的对象是多⼤？
+//
+//class A
+//{
+//public:
+//	void Print()
+//	{
+//		cout << _ch << endl;
+//	}
+//private:
+//	char _ch;
+//	int _i;
+//};
+//
+//class B
+//{
+//public:
+//	void Print()
+//	{
+//		//...
+//	}
+//};
+//
+//class C
+//{
+//	//...
+//};
+//
+//int main() {
+//
+//	cout << sizeof(A) << "\n" << sizeof(B) << "\n" << sizeof(C);
+//	return 0;
+//}
