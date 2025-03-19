@@ -2,7 +2,7 @@
 // 函数定义
 void Stack::Init(int n) {
 	_arr = (int*)malloc(sizeof(int) * n);
-	if (_arr == nullptr){
+	if (_arr == nullptr) {
 		perror("申请空间失败");
 		return;
 	}
@@ -26,8 +26,9 @@ void Stack::Push(int input) {
 
 int Stack::Top() {
 	assert(_top > 0);
-	return _arr[_top - 1];}
-	
+	return _arr[_top - 1];
+}
+
 void Stack::Destroy() {
 	free(_arr);
 	_arr = nullptr;
