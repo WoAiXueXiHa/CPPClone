@@ -1,4 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS 1
+﻿
 #include "Show.h"
 //// class为类 是CPP的自定义类型
 //// 定义一个栈
@@ -135,38 +135,102 @@
 
 // 构造函数
 
-class Info {
+//class Info {
+//public:
+//	// 无参的默认构造函数
+//	Info() {
+//		_name = "UnKnow";
+//		_age = 0;
+//	}
+//	//// C2668 对重载函数的调用不明确 两种默认构造函数不能同时存在
+//	//// 全缺省的默认构造函数
+//	//Info(string name = "KUNKUN", int age = 18) {
+//	//	_name = name;
+//	//	_age = age;
+//	//}
+//	// 带参数的构造函数
+//	Info(string name, int age) {
+//		_name = name;
+//		_age = age;
+//	}
+//
+//	void Print() {
+//		cout << " 默认构造函数被调用" << endl;
+//		cout << _name << "  " << _age << endl;
+//	}
+//private:
+//	string _name;
+//	int _age;
+//};
+
+//int main() {
+//	//Info I1;
+//	//I1.Print();
+//	
+//	// 调用带参数的构造函数
+//	Info I2("kunkun", 18);
+//	
+//	I2.Print();
+//}
+
+//class Time {
+//public:
+//	Time() {
+//		cout << "构造函数调用成功" << endl;
+//		_hour = 0;
+//		_minute = 0;
+//		_second = 0;
+//	}
+//private:
+//	int _hour;
+//	int _minute;
+//	int _second;
+//};
+//
+//class Date {
+//public:
+//	/*Date(int year, int month, int day) {
+//		_year = year;
+//		_month = month;
+//		_day = day;
+//	}*/
+//
+//	void Print() {
+//		cout << "构造函数成功调用" << endl;
+//		cout << _year <<"-" << _month << "-" << _day << endl;
+//	}
+//
+//private:
+//	int _year;
+//	int _month;
+//	int _day;
+//	// 添加自定义类型
+//	Time _t;
+//};
+//
+//int main() {
+//	Date D1;
+//	D1.Print();
+//
+//	return 0;
+//}
+
+// 析构函数
+class Test {
 public:
-	// 无参构造函数
-	Info() {
-		char* tmp = (char*)malloc(40);
-		if (tmp == nullptr) {
-			perror("malloc() err!");
-			return;
-		}
-
-		_name = tmp;
-		strcpy(_name, "kunkun");
-
-		_age = 18;
-		_score = 2.5;
+	Test() {
+		cout << "构造函数调用成功" << endl;
 	}
-
-	// 全缺省构造函数
-	Info(char* name = (char*)"k", int age = 10, double score = 5.8) {
-		_name = name;
-		_age = age;
-		_score = score;
+	~Test() {
+		cout << "析构函数调用成功" << endl;
 	}
-
-	//// 带参构造函数
-	//Info(char* name,int age,double score) {
-	//	_name = name;
-	//	_age = age;
-	//	_score = score;
-	//}
 private:
-	char* _name;
-	int _age;
-	double _score;
 };
+
+int main() {
+	cout << "程序开始运行" << endl;
+	{
+		Test T;// 构造函数被调用
+	}// T生命周期结束
+	cout << "程序运行结束";
+}
