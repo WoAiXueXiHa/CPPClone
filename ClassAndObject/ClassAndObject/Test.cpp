@@ -215,22 +215,24 @@
 //	return 0;
 //}
 
-// 析构函数
-class Test {
-public:
-	Test() {
-		cout << "构造函数调用成功" << endl;
-	}
-	~Test() {
-		cout << "析构函数调用成功" << endl;
-	}
-private:
-};
+//// 析构函数
+//class Test {
+//public:
+//	Test() {
+//		cout << "构造函数调用成功" << endl;
+//	}
+//	~Test() {
+//		cout << "析构函数调用成功" << endl;
+//	}
+//private:
+//};
+//
+//int main() {
+//	cout << "程序开始运行" << endl;
+//	{
+//		Test T;// 构造函数被调用
+//	}// T生命周期结束
+//	cout << "程序运行结束";
+//}
 
-int main() {
-	cout << "程序开始运行" << endl;
-	{
-		Test T;// 构造函数被调用
-	}// T生命周期结束
-	cout << "程序运行结束";
-}
+// 拷贝构造函数
