@@ -236,3 +236,117 @@
 //}
 
 // 拷贝构造函数
+class Date {
+public:
+	Date(int year = 1, int month = 1, int day = 1)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+	// err: “Date”: 非法的复制构造函数: 第一个参数不应是“Date”
+	// Date(Date d);
+	// 
+	// 拷贝构造函数
+	Date(const Date& d) {
+		_year = d._year;
+		_month = d._month;
+		_day = d._day;
+		cout << "拷贝构造函数被调用！" << endl;
+	}
+
+	// 严重的错误，将新对象赋值给已经存在的d的对象
+	// 新对象未初始化，原对象被修改
+	/*Date(Date& d) {
+		d._year = _year;
+		d._month = _month;
+		d._day = _day;
+	}*/
+
+	void Print() {
+		cout << _year << "-" << _month << "-" << _day << endl;
+	}
+	// 指针类型
+	Date(Date* d){
+		_year = d->_year;
+		_month = d->_month;
+		_day = d->_day;
+	}
+private:
+	int _year;
+	int _month;
+	int _day;
+};
+void AddressPrint(Date d) {
+	cout <<"函数调用："<< & d << endl;
+	d.Print();
+}
+// 传值返回
+Date Func1() {
+	Date tmp(2024, 7, 5);
+	tmp.Print();
+	return tmp;
+}
+// 传引用返回
+Date& Func2(){
+	Date tmp(2024, 7, 5);
+	tmp.Print();
+	return tmp;
+}
+int main() {
+
+	//Date d1(2024, 3, 26);
+	//// 这⾥的d1传值传参给d要调用拷贝构造完成拷贝，传引用传参可以减少拷贝
+	//AddressPrint(d1);
+	//cout << "***************************************" << endl; // 用于分隔
+	//cout << "主函数中显式写：" << &d1 << endl;
+	//cout << "***************************************" << endl; // 用于分隔
+
+	////这里可以完成拷贝，但不是拷贝构造，只是一个简单的初始化 
+	//Date d2(&d1);
+	//d1.Print();
+	//d2.Print();
+
+	//cout << "***************************************" << endl; // 用于分隔
+
+	//// 拷贝构造这样写
+	//// 两种写法 更推荐第二种
+	//Date d3(d1);
+	//Date d4 = d2;
+	//d3.Print();
+	//d4.Print();
+
+	// Func返回了一个局部对象tmp的引用作为返回值
+	// Func2函数结束，tmp对象被销毁，相当于野引用
+	Date ret2 = Func2();
+	ret2.Print();
+	cout << "*******************************" << endl;
+	Date ret1 = Func1();
+	ret1.Print();
+
+	return 0;
+}
+
+//// 浅拷贝和深拷贝
+//class Stack {
+//public:
+//	// 没有显式写拷贝构造，默认生成的拷贝构造：
+//	Stack(Stack& ST) {
+//		_a = ST._a; // 直接复制指针地址，浅拷贝
+//		_size = ST._size;
+//		_capacity = ST._capacity;
+//	}
+//private:
+//	int* _a;
+//	int _size;
+//	int _capacity;
+//};
+//
+//int main() {
+//	Stack st1;
+//	st1.Push(1);
+//	st1.Push(2);
+//
+//	Stack st2 = st1;  // 调用默认拷贝构造函数（浅拷贝）
+//
+//}
