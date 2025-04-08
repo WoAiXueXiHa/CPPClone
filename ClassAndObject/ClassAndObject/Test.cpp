@@ -352,61 +352,61 @@
 ////}
 
 // 运算符重载
-
-class Date {
-public:
-	// 非法使用运算符重载 .* :: sizeof . ?: 这五个操作符不可重载
-	// void operator::() {}
-	// 构造函数
-	Date(int year = 2025, int month = 1, int day = 1) {
-		_year = year;
-		_month = month;
-		_day = day;
-	}
-
-	// 判断两天是否相等
-	bool operator==(const Date& d) {
-		return _year == d._year
-			&&_month == d._month
-			&&_day == d._day;
-	}
-
-	// 前置++
-	Date& operator++( ) {
-		cout <<"前置" << endl;
-		++_day;
-		return *this;
-	}
-	// 后置++
-	Date& operator++(int){
-		cout << "后置" << endl;
-		Date tmp = *this;
-		++_day;
-		return tmp;
-	}
-
-	// 打印数据
-	void Print() {
-		cout << "_year" << "-" << "_month" << "-" << "_day" << endl;
-	}
-  
-private:
-	int _year;
-	int _month;
-	int _day;
-
-};
-
-int mian() {
-	Date d1(2025, 3, 30);
-	Date d2(2024, 3, 30);
-	
-	// 运算符重载可以显式调用
-	d1.operator==(d2);
-	// 这样更能体现CPP的优势 转换成调用 d1.operator==(d2)
-	d1 == d2;
-
-	++d1;
-	d2++;
-	return 0;
-}
+//
+//class Date {
+//public:
+//	// 非法使用运算符重载 .* :: sizeof . ?: 这五个操作符不可重载
+//	// void operator::() {}
+//	// 构造函数
+//	Date(int year = 2025, int month = 1, int day = 1) {
+//		_year = year;
+//		_month = month;
+//		_day = day;
+//	}
+//
+//	// 判断两天是否相等
+//	bool operator==(const Date& d) {
+//		return _year == d._year
+//			&&_month == d._month
+//			&&_day == d._day;
+//	}
+//
+//	// 前置++
+//	Date& operator++( ) {
+//		cout <<"前置" << endl;
+//		++_day;
+//		return *this;
+//	}
+//	// 后置++
+//	Date& operator++(int){
+//		cout << "后置" << endl;
+//		Date tmp = *this;
+//		++_day;
+//		return tmp;
+//	}
+//
+//	// 打印数据
+//	void Print() {
+//		cout << "_year" << "-" << "_month" << "-" << "_day" << endl;
+//	}
+//  
+//private:
+//	int _year;
+//	int _month;
+//	int _day;
+//
+//};
+//
+//int mian() {
+//	Date d1(2025, 3, 30);
+//	Date d2(2024, 3, 30);
+//	
+//	// 运算符重载可以显式调用
+//	d1.operator==(d2);
+//	// 这样更能体现CPP的优势 转换成调用 d1.operator==(d2)
+//	d1 == d2;
+//
+//	++d1;
+//	d2++;
+//	return 0;
+//}
