@@ -30,8 +30,14 @@ void TestDate3() {
 	d1++;
 	++d1;
 }
+void TestDate4() {
+	Date d1(2024, 4, 8);
+	Date d2(2027, 4, 8);
+	int ret = d1 - d2;
+	cout << ret << endl;
+}
 
 int main() {
-	TestDate3();
+	TestDate4();
 	return 0;
 }
