@@ -439,4 +439,6 @@ private:
 	int _day;
 	int _month;
 	int _year;
+
+	Time _h;
 };
