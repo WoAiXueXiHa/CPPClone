@@ -411,3 +411,32 @@
 //	return 0;
 //}
 
+// 初始化列表
+class Time {
+public:
+	// 构造函数
+	// 初始化列表 ":"开始 ","分隔 本质是每个对象中的成员定义的地方
+	Time()
+		:_hour(1)
+	{
+		cout << "Time()构造调用\n";
+	}
+private:
+	int _hour;
+};
+
+class Date {
+public:
+	Date()
+		:_day(15)
+		,_month(4)
+		,_year(2025)
+	{
+		cout << "Date()构造调用成功   ";
+		cout << _year << "-" << _month << "-" << _day;
+	}
+private:
+	int _day;
+	int _month;
+	int _year;
+};
