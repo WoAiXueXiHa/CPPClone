@@ -411,34 +411,285 @@
 //	return 0;
 //}
 
-// 初始化列表
-class Time {
-public:
-	// 构造函数
-	// 初始化列表 ":"开始 ","分隔 本质是每个对象中的成员定义的地方
-	Time()
-		:_hour(1)
-	{
-		cout << "Time()构造调用\n";
-	}
-private:
-	int _hour;
-};
+// 流插入 流提取的运算符重载
+// 内置类型可以直接使用，因为库里面已经写好了
+// int i = 1;
+// cout << i;
+// 我们可以将流插入进行运算符重载
+// cout.operator<<(i);// 自动识别类型，本质是流插入重载成函数重载了
 
-class Date {
-public:
-	Date()
-		:_day(15)
-		,_month(4)
-		,_year(2025)
-	{
-		cout << "Date()构造调用成功   ";
-		cout << _year << "-" << _month << "-" << _day;
-	}
-private:
-	int _day;
-	int _month;
-	int _year;
+//class Date {
+//public:
+//	friend ostream& operator<<(ostream& out, const Date& d);
+//	friend istream& operator>>(istream& in, Date& d);
+//	Date(int year, int month, int day)
+//		:_year(2025)
+//		, _month(4)
+//		, _day(15) 
+//	{
+//		_year = year;
+//		_month = month;
+//		_day = day;
+//	}
+//
+//	// void operator<<(const Date* this, ostream& out)
+//	// 参数的顺序和操作数要保持一致
+//	//void operator<<(ostream& out) {
+//	//	out << "<< 运算符重载成功";
+//	//	out << _year << "-" << _month << "-" << _day<<endl;
+//	//}
+//private:
+//	int _year;
+//	int _month;
+//	int _day;
+//};
+//ostream& operator<<(ostream& out, const Date& d) {
+//	out << "<<重载成功";
+//	out << d._year << "-" << d._month << "-" << d._day << endl;;
+//	return out;
+//}
+//istream& operator>>(istream& in, Date& d) {
+//	cout << "请依次输入年月日：<" << endl;
+//	in >> d._year >> d._month >> d._day;
+//	return in;
+//}
+//int main() {
+//	Date d1(2025,4,15);
+//	// void operator<<(const Date* this, ostream& out)
+//	// 参数的顺序和操作数要保持一致
+//	/*d1.operator<<(cout);
+//	d1 << cout;*/
+//	// 这样使用很不符合正常逻辑 cout << d1这样才符合我们的习惯
+//	/*cout << d1;*/
+//	// 那就需要我们强制设计成 ostream& operator(ostream& out, const Date& d)这样的格式 ，将这个函数设置成全局函数
+//	cin >> d1;
+//	cout<<d1;
+//}
 
-	Time _h;
+//// 初始化列表
+//// 实现一个栈
+//typedef int DataType;
+//class Stack {
+//public:
+//	// 默认构造
+//	Stack(size_t capacity = 4) {
+//		_arr = (DataType*)malloc(sizeof(DataType) * capacity);
+//		if (_arr == nullptr) {
+//			perror("_arr malloc err!");
+//			return;
+//		}
+//		_capacity = capacity;
+//		_top = 0;
+//	}
+//	void Push(DataType val) {
+//		_arr[_top++] = val;
+//	}
+//
+//	// 其他方法实现
+//	~Stack() {
+//		if (_arr) {
+//			free(_arr);
+//			_arr = nullptr;
+//			_top = _capacity = 0;
+//		}
+//	}
+//private:
+//	DataType* _arr;
+//	int _top;
+//	size_t _capacity;
+//};
+//// 两个栈实现一个队列
+//class MyQueue {
+//public:
+//	// 若Stack不具备默认构造，那么MyQueue也无法生成默认构造
+//	// 1、引用 2、const 3、没有默认构造自定义类型成员(必须显示传参调构造)
+//	MyQueue(int n, int& rr)
+//		:_pushst(n)
+//		, _popst(n)
+//		, _top(0)
+//		,_val(1)
+//		,_ref(rr)
+//	{
+//	
+//	}
+//// 声明成员变量
+//private:
+//	Stack _pushst;
+//	Stack _popst;
+//	int _top;
+//
+//	// 必须在定义时初始化
+//	// C++11给缺省值 
+//	const int _val = 0;
+//	char s = '0';
+//	int& _ref;
+//};
+//int main() {
+//	int aa = 0;
+//	MyQueue q1(10,aa);
+//	return 0;
+//}
+
+//class A
+//{
+//public:
+//	A(int a)
+//		:_a1(a)
+//		, _a2(_a1) 
+//	{
+//	}
+//	void Print() {
+//		cout << _a1 << " " << _a2 << endl;
+//	}
+//private:
+//	int _a2 = 2;
+//	int _a1 = 2;
+//};
+//int main()
+//{
+//	A aa(1);
+//	aa.Print();
+//}
+
+//// 类型转换
+//class classA {
+//public:
+//	// 单参数构造
+//	classA(int a)
+//	:_aa(a)
+//	{
+//		cout << "classA(int a)\n";
+//	}
+//	// 多参数构造
+//	classA(int a1, int a2)
+//		:_a1(a1)
+//		, _a2(a2)
+//	{
+//		cout << "classA(int a1, int a2)\n";
+//	}
+//private:
+//	// 声明给缺省值
+//	int _aa = 0;
+//	int _a1 = 1;
+//	int _a2 = 3;
+//};
+//
+//int main() {
+//	classA a1(1);
+//	// 拷贝构造
+//	classA a2 = a1;
+//
+//	// 隐式类型转换
+//	// 3构造了一个classA的临时对象，再用这个临时对象拷贝构造a3
+//	// 这里经历了构造、拷贝两个过程，编译器优化为一步，直接构造
+//	classA a3 = 3;
+//
+//	// raa 引用的是类型转换中用3构造的临时对象 
+//	const classA& raa = 3;
+//
+//	// 多参数传参用大括号
+//	classA aa1 = { 1 , 2 };
+//	const classA& raaa = { 1 , 3 };
+//
+//	return 0;
+//}
+
+//// 实现一个类 计算创建出了多少类对象
+//// 有对象的创建就++ 有析构就-- ，用静态变量存储这个值，最后返回最终值
+//class classB {
+//public:
+//	classB() {
+//		++_SumCnt;
+//	}
+//	classB(const classB& t) {
+//		++_SumCnt;
+//	}
+//	~classB() {
+//		--_SumCnt;
+//	}
+//	static int GetBCount() {
+//		return _SumCnt;
+//	}
+//	// 类里面声明
+//	// 不能给缺省值，因为缺省值是给初始化列表
+//	// 在静态区而不在对象中，不走初始化列表
+//	static int _SumCnt;
+//private:
+//	int _b1;
+//	int _b2;
+//};
+//classB func() {
+//	classB bb4;
+//	return bb4;
+//}
+//
+//// 类外面初始化 即定义
+//int classB::_SumCnt = 0;
+//
+//int main() {
+//	classB bb1;
+//	cout << sizeof(bb1) << endl;
+//
+//	classB bb2;
+//	classB bb3(bb2);
+//
+//	func();
+//	// 直接访问
+//	cout << classB::GetBCount() << endl;
+//
+//}
+
+//class Time {
+//	// 声明Date是Time的友元，但是Time不是Date的友元
+//	// Date类中可以访问Time类中的成员，但是Time类中不能访问Date中的成员
+//	friend class Date;
+//public:
+//	Time(int hour = 10, int minute = 12, int second = 24)
+//		:_hour(hour)
+//		, _minute(minute)
+//		, _second(second)
+//	{
+//
+//	}
+//private:
+//	int _hour;
+//	int _minute;
+//	int _second;
+//};
+//class Date {
+//public:
+//	Date(int year = 2025, int month = 4, int day = 16)
+//		:_year(year)
+//		, _month(month)
+//		, _day(day) 
+//	{
+//		// 直接在Date类中访问Time类的_hour
+//		_t._hour = 0;
+//	}
+//
+//	void SetTimeOfDate(int hour, int minute, int second) {
+//		// 直接访问Time类的成员
+//		_t._hour = hour;
+//		_t._minute = minute;
+//		_t._second = second;
+//	}
+//private:
+//	int _year;
+//	int _month;
+//	int _day;
+//	// 在Date类中声明Time类
+//	Time _t;
+//};
+
+class B {
+public:
+	// A是B的内部类
+	// 仅仅是将A放到B中，还受到类域和访问限定符的限制
+	class A { // A天生是B的友元
+	private:
+		int a1;
+	};
+private:
+	int b1;
+	char b2;
 };
