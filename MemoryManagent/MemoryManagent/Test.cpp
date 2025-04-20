@@ -56,9 +56,9 @@ int main() {
 	//free(p5);
 	//delete[] p6;
 
-	// 如果是多参数构造呢？
-	ShowClass* p7 = new ShowClass[10]{ 1,2,3,{7,8} };
-	delete[] p7;
+	//// 如果是多参数构造呢？
+	//ShowClass* p7 = new ShowClass[10]{ 1,2,3,{7,8} };
+	//delete[] p7;
 
 	return 0;
 }
