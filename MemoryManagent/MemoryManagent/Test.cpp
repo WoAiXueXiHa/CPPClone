@@ -26,7 +26,7 @@ public:
 		cout << "ShowClass(int val = 0)" << endl;
 	}
 	// 多参数默认构造
-	ShowClass(int val1 = 0, int val2 = 1) {
+	ShowClass(int val1, int val2) {
 		cout << "ShowClass(int val1 = 0, int val2 = 1)" << endl;
 	}
 
@@ -37,28 +37,29 @@ public:
 private:
 	int _val;
 };
-
+//
 int main() {
-	//// new/delete和malloc/free最大的区别就是前者会调用构造和析构，后者不会
-	//ShowClass* p1 = (ShowClass*)malloc(sizeof(ShowClass)); // 不能初始化
-	//ShowClass* p2 = new ShowClass(1);// int类型隐式转换成ShowClass类
-	//free(p1);
-	//delete p2;
+//	// new/delete和malloc/free最大的区别就是前者会调用构造和析构，后者不会
+//	ShowClass* p1 = (ShowClass*)malloc(sizeof(ShowClass)); // 不能初始化
+//	ShowClass* p2 = new ShowClass(1);// int类型隐式转换成ShowClass类
+//	free(p1);
+//	delete p2;
+//
+//	// 内置类型是几乎是一样的
+//	int* p3 = (int*)malloc(sizeof(int)); 
+//	int* p4 = new int;
+//	free(p3);
+//	delete p4;
+//
+//	ShowClass* p5 = (ShowClass*)malloc(sizeof(ShowClass) * 10);
+	ShowClass* p6 = new ShowClass[10];
+//	free(p5);
+	delete[] p6;
+//
+	// 如果是多参数构造呢？
+	ShowClass* p7 = new ShowClass[10]{ 1,2,3,{7,8} };
 
-	//// 内置类型是几乎是一样的
-	//int* p3 = (int*)malloc(sizeof(int)); 
-	//int* p4 = new int;
-	//free(p3);
-	//delete p4;
-
-	//ShowClass* p5 = (ShowClass*)malloc(sizeof(ShowClass) * 10);
-	//ShowClass* p6 = new ShowClass[10];
-	//free(p5);
-	//delete[] p6;
-
-	//// 如果是多参数构造呢？
-	//ShowClass* p7 = new ShowClass[10]{ 1,2,3,{7,8} };
-	//delete[] p7;
+	delete[] p7;
 
 	return 0;
 }
@@ -77,5 +78,9 @@ int main() {
 //	delete p1;
 //	delete p2;
 //	delete[] p3;
+//
+//}
+
+//int main() {
 //
 //}
