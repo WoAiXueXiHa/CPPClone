@@ -50,6 +50,9 @@ using namespace std;
 //	return 0;
 //}
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 //// 范围for 
 //int main() {
 //	int arr[5] = { 0,1,2,3,4 };
@@ -83,6 +86,8 @@ using namespace std;
 //
 //}
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 // string类的常用接口
 
 // //1. 拷贝构造之类
@@ -110,7 +115,10 @@ using namespace std;
 //    cout << s3 << endl;
 //}
 
-//// 遍历操作
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+//// 2.遍历操作
 //void TestS2() {
 //    string s("hello world");
 //    // 1. 下标+[]
@@ -150,9 +158,62 @@ using namespace std;
 //    for (auto ch : s) cout << ch;
 //}
 //
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//// 3.容量操作
+//void TestS3() {
+//    // size length capacity resize clear
+//    string s0("hello, cs!");
+//    cout << s0.size() << endl;// 计算一个字符串的长度 单位字节
+//    cout << s0.length() << endl;// 计算一个字符串的长度 单位字节
+//    cout << s0.capacity() << endl; // 返回当前vector所分配的内存空间 单位字节
+//
+//    s0.clear();// 将s0的有效字符清空，注意：不改变底层空间大小，仅仅清理字符
+//    cout << s0 << endl;
+//    cout <<"size:" << s0.size() << "     capacity:"<< s0.capacity()<< endl;
+//
+//    // 将s1的有效字符增加到12，剩下的用字符'a'填充
+//    string s1("I like code to C");
+//    s1.resize(18, '++');
+//    cout << s1 << endl;
+//    cout << "size:" << s1.size() << "    capacity:" << s1.capacity() << endl;
+//    // 将s1有效字符增加到20，剩下的用'\0'填充 "I like code to C++\0\0"
+//    s1.resize(20);
+//    cout << s1 << endl;
+//    cout << "size:" << s1.size() << "    capacity:" << s1.capacity() << endl;
+//
+//    // 将s1有效字符减少到5
+//    s1.resize(5);
+//    cout << s1 << endl;
+//    cout << "size:" << s1.size() << "    capacity:" << s1.capacity()<< endl;
+//   
+//    // void reserve (size_t n = 0);
+//    // 为s2预留额外11个字符的空间，是一种预分配内存的方式
+//    // 这意味着在添加字符时，如果新字符的数量不超过预留的空间，就不需要重新分配内存，从而减少了性能开销
+//    // 如果 n 大于当前字符串的容量，该函数会使容器将其容量增加到 n 个字符（或更多）
+//    string s2("hello");
+//    cout << "size:" << s2.size() << "    capacity:" << s2.capacity() << endl;
+//    s2.reserve(16);
+//    cout << "size:" << s2.size() << "    capacity:" << s2.capacity() << endl;
+//    s2 += " C++!";
+//    cout << s2 << endl;
+//    cout << "size:" << s2.size() << "    capacity:" << s2.capacity() << endl;
+//
+//    // bool empty() const;
+//    // 检测字符串是否为空（即其长度是否为 0） 空返回1 非空返回0
+//    string s3 = "";
+//    string s4 = "haha";
+//    bool ret1 = s3.empty();
+//    bool ret2 = s4.empty();
+//    cout << "ret1:" << ret1 << "   ret2:" << ret2 << endl;
+//
+//}
+
+
+
 int main() {
    // TestS1();
    // TestS2();
-
+   // TestS3();
     return 0;
 }
