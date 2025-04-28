@@ -209,11 +209,30 @@ using namespace std;
 //
 //}
 
+// 4.修改操作
+// 4.1. 插入(拼接)方式：push_back  append  operator+= 
+// 4.2. 正向和反向查找：find() + rfind()
+// 4.3. 截取子串：substr()
+// 4.4. 删除：erase
 
+void TestS4() {
+    string s0("HELLO C++");
+    cout << "origin: " << s0 << endl;
+    s0.push_back('!'); // 在s0字符串结尾尾插'!'
+    cout << "push_back: " << s0 << endl;
+    s0.append("I like C++!");// 结尾追加字符串"I like C++!"
+    cout << "append: " << s0 << endl;
+    s0 += "\nI like coding"; // 结尾添加字符串"\nI like coding"
+    cout << "operator+=: " << s0 << endl;
+
+    cout << s0.c_str() << endl;   // 以C语言的方式打印字符串
+   
+}
 
 int main() {
    // TestS1();
    // TestS2();
    // TestS3();
+    TestS4();
     return 0;
 }
