@@ -226,7 +226,29 @@ void TestS4() {
     cout << "operator+=: " << s0 << endl;
 
     cout << s0.c_str() << endl;   // 以C语言的方式打印字符串
-   
+
+    // 获取string.cpp的后缀
+    string str("string.cpp");
+    size_t pos = str.find('.'); // 找.在str中的位置
+    string str_back(str.substr(pos, str.size() - pos)); // 找[pos,str.size()]这个区间的字符串并返回
+    cout << str_back << endl;
+
+    string url("https://cplusplus.com/");
+    size_t begin = url.find("://");
+    if (begin == string::npos) { // npos是一个静态size_t类型全局变量 值为-1 可以理解为整个字符串的结尾，超级超级大
+        cout << "无效域名" << endl;
+        return;
+    }
+
+    begin += 3;
+    string url_find(url.substr(begin, url.size() - begin - 1)); // -1去掉结尾'/'
+    cout << url_find << endl;
+
+    // 反向查找
+    string s2("nihao");
+    size_t start = s2.rfind('o');
+    size_t last = s2.rfind('n');  
+    cout << s2.substr(last, start) << endl;
 }
 
 int main() {
