@@ -244,11 +244,18 @@ void TestS4() {
     string url_find(url.substr(begin, url.size() - begin - 1)); // -1去掉结尾'/'
     cout << url_find << endl;
 
-    // 反向查找
+    // 删除url的协议前缀
+    pos = url.find("://");
+    url.erase(0, pos + 3);
+    cout << url << endl;
+
+
+    // 反向查找 
     string s2("nihao");
     size_t start = s2.rfind('o');
     size_t last = s2.rfind('n');  
-    cout << s2.substr(last, start) << endl;
+    cout << s2.substr(last, start + 1) << endl; // [last,start + 1)
+
 }
 
 int main() {
