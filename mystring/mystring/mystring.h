@@ -1,11 +1,21 @@
 #include <iostream>
 using namespace std;
 
-namespace myString 
+namespace Vect 
 {
-	class myString {
+	class myString 
+	{
 	public:
-		myString(const char* str);
+		typedef char* iterator;
+		iterator begin();
+		iterator end();
+
+		// 构造
+		/*myString();
+		myString(const char* str);*/
+		// 给全缺省，声明给，定义时不用
+		myString(const char* str = "");
+		// 析构
 		~myString();
 	private:
 		char* _str;
