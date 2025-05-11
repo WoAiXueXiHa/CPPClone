@@ -27,6 +27,10 @@ namespace Vect
 		_capacity = _size;
 		strcpy_s(_str, _size, str);
 	}
+
+	myString::iterator begin() {
+
+	}
 	// Îö¹¹
 	myString::~myString() 
 	{
