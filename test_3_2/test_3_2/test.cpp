@@ -224,29 +224,29 @@ using namespace std;// 展开std标准库
 //	cout << "Print(char c)" << endl;
 //}
 //
-//// 是函数重载，但是编译器不知道匹配谁 存在歧义
-//void f() {
-//	cout << "f()" << endl;
-//}
-//void f(int a = 2) {
-//	cout << "f(int a)" << endl;
-//}
-//int main() {
-//	Add(6, 7);
-//	Add(1.3, 8.1);
-//
-//	fuc(7, 8.6);
-//	fuc(8.6, 7);
-//
-//	Print('a',8);
-//	Print('a');
-//
-//	//f();
-//	//f(1);
-//
-//	return 0;
-//
-//}
+// 是函数重载，但是编译器不知道匹配谁 存在歧义
+void f() {
+	cout << "f()" << endl;
+}
+void f(int a = 1) {
+	cout << "f(int a = 1)" << endl;
+}
+int main() {
+	/*Add(6, 7);
+	Add(1.3, 8.1);
+
+	fuc(7, 8.6);
+	fuc(8.6, 7);
+
+	Print('a',8);
+	Print('a');*/
+
+	f();
+	f(1);
+
+	return 0;
+
+}
 
 // &引用
 
@@ -336,7 +336,7 @@ using namespace std;// 展开std标准库
 //	return 0;
 //}
 
-// NULL是一个宏 
-int mian() {
-	int* ptr = NULL;
-}
+//// NULL是一个宏 
+//int mian() {
+//	int* ptr = NULL;
+//}

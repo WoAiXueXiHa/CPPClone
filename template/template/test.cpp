@@ -79,39 +79,80 @@ using namespace std;
 //}
 //
 
-// 专门处理int的加法函数
-int Add(int left, int right)
+//// 专门处理int的加法函数
+//int Add(int left, int right)
+//{
+//	cout << "int Add(int left, int right)" << endl;
+//	return left + right;
+//}
+//// 通用加法函数1
+//template<class T>
+//T Add(T left, T right)
+//{
+//	cout << "T Add(const T& left, const T& right)" << endl;
+//	return left + right;
+//}
+//// 通用加法函数2
+//template<class T1, class T2>
+//auto Add(T1 left, T2 right)
+//{
+//	cout << "auto Add(T1 left, T2 right)" << endl;
+//	return left + right;
+//}
+//void Test1()
+//{
+//	Add(1, 2);		  // 与非模板函数匹配，编译器不需要特化
+//	Add<int>(1, 2);   // 调用编译器特化的Add版本
+//}
+//void Test2()
+//{
+//	Add(1, 2);		// 与非函数模板类型完全匹配，不需要函数模板实例化
+//	Add(1, 2.0);    // 模板函数可以生成更加匹配的版本，编译器根据实参生成更加匹配的Add函数
+//}
+//int main()
+//{
+//	Test1();
+//	Test2();
+//	return 0;
+//}
+
+// 类模板
+
+// 格式
+/*template<class T1, class T2, ..., class Tn>
+class 类模板名
 {
-	cout << "int Add(int left, int right)" << endl;
-	return left + right;
-}
-// 通用加法函数1
+	// 类内成员定义
+};*/
+
+template<typename T>
+class Stack
+{
+public:
+    Stack(size_t capacity = 4)
+    {
+        _array = new T[capacity];
+        _capacity = capacity;
+        _size = 0;
+    }
+    void Push(const T& data);
+private:
+    T* _array;
+    size_t _capacity;
+    size_t _size;
+};
+// 模版不建议声明和定义分离到两个文件.h 和.cpp会出现链接错误
 template<class T>
-T Add(T left, T right)
+void Stack<T>::Push(const T& data)
 {
-	cout << "T Add(const T& left, const T& right)" << endl;
-	return left + right;
-}
-// 通用加法函数2
-template<class T1, class T2>
-auto Add(T1 left, T2 right)
-{
-	cout << "auto Add(T1 left, T2 right)" << endl;
-	return left + right;
-}
-void Test1()
-{
-	Add(1, 2);		  // 与非模板函数匹配，编译器不需要特化
-	Add<int>(1, 2);   // 调用编译器特化的Add版本
-}
-void Test2()
-{
-	Add(1, 2);		// 与非函数模板类型完全匹配，不需要函数模板实例化
-	Add(1, 2.0);    // 模板函数可以生成更加匹配的版本，编译器根据实参生成更加匹配的Add函数
+    // 扩容
+    _array[_size] = data;
+    ++_size;
 }
 int main()
 {
-	Test1();
-	Test2();
-	return 0;
+    // 实例化
+    Stack<int> st1;    // int
+    Stack<double> st2; // double
+    return 0;
 }
