@@ -35,7 +35,8 @@ namespace Vect
 		void insert(size_t pos, char ch);
 		void insert(size_t pos, const char* ch);
 		void earse(size_t pos, size_t len);
-		
+		void push_back(char ch);
+		void append(const char* str);
 	private:
 		char* _str;
 		size_t _size;
