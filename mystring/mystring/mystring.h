@@ -30,6 +30,10 @@ namespace Vect
 		// 析构
 		~myString();
 
+		// 从pos位置开始查询指定字符，指定字符串的位置
+		size_t find(char ch, size_t pos = 0);
+		size_t find(const char* str, size_t pos = 0);
+
 		// 插入删除操作
 		void reserve(size_t n);
 		void insert(size_t pos, char ch);
@@ -37,6 +41,11 @@ namespace Vect
 		void earse(size_t pos, size_t len);
 		void push_back(char ch);
 		void append(const char* str);
+
+		
+		myString& operator+=(char ch);
+		myString& operator+=(const char* str);
+
 	private:
 		char* _str;
 		size_t _size;

@@ -57,6 +57,14 @@ namespace Vect
 		s2.earse(2, 2);
 		cout << s2.c_str();
 
+		myString s3 = ("qqq");
+		cout << endl << s3.c_str() << endl;
+		s3.push_back('x');
+		cout << s3.c_str() << endl;
+		s3.append("wwwwwwwwwwwwwwwwwww");
+		cout << s3.c_str() << endl;
+		s3.append("llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
+		cout << s3.c_str() << endl;
 	}
 }
 

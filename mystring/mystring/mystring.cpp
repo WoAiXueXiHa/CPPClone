@@ -50,7 +50,22 @@ namespace Vect
 		assert(pos <= _size);
 		return _str[pos];
 	}
+
+	// 从pos位置开始查询指定字符，指定字符串的位置
+	size_t myString::find(char ch, size_t pos)
+	{
+		for (size_t i = pos; i < _size; i++)
+		{
+			if (_str[i] == ch) return i;
+		}
+		return npos;
+	}
+	size_t myString::find(const char* str, size_t pos)
+	{
+
+	}
 	
+
 	// 插入删除操作
 	// 首先要判断容量够不够 我们先预留空间
 	void  myString::reserve(size_t n)
@@ -119,6 +134,51 @@ namespace Vect
 			strcpy(_str + pos, _str + pos + len);
 			_size -= len;
 		}
+	}
+
+	void myString::push_back(char ch)
+	{
+		if (_size == _capacity)
+		{
+			size_t newCapacity = _capacity == 0 ? 4 : 2 * _capacity;
+			reserve(newCapacity);
+		}
+
+		//// 传统写法
+		//_str[_size] = ch;
+		//_str[_size + 1] = '\0';
+		//++_size;
+
+		// 复用insert
+		insert(_size, ch);
+
+
+	}
+	void myString::append(const char* str)
+	{
+		// 先检查容量
+		size_t len = strlen(str);
+		if (_size + len >= _capacity)
+		{
+			reserve(_capacity + len + 1);
+		}
+		//// 传统写法
+		//memcpy(_str + _size, str, len);
+		//_size += len;
+
+		// 复用insert
+		insert(_size, str);
+	}
+
+	myString& myString::operator+=(char ch)
+	{
+		push_back(ch);
+		return *this;
+	}
+	myString& myString::operator+=(const char* str)
+	{
+		append(str);;
+		return *this;
 	}
 }
 	
