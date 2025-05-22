@@ -1,10 +1,11 @@
-// 118. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+// 118. Ñî»ÔÈý½Ç
 /*class Solution {
+public:
     vector<vector<int>> generate(int numRows) {
         vector<vector<int>> two_arr(numRows);
         for(size_t i = 0; i < numRows; ++i)
         {
-            // ï¿½ï¿½ï¿½Õ¼ä²¢ï¿½ï¿½Ê¼ï¿½ï¿½ ï¿½ï¿½iï¿½Ðµï¿½Ò»ï¿½ï¿½ï¿½Íµï¿½iï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½È«ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½1
+            // ¿ª¿Õ¼ä²¢³õÊ¼»¯ µÚiÐÐµÚÒ»¸öºÍµÚiÐÐ×îºóÒ»¸öÈ«³õÊ¼»¯³É1
             two_arr[i].resize(i + 1, 1);
         }
         for(size_t i = 2; i < numRows; ++i)
