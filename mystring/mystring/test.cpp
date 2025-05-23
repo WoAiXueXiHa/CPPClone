@@ -99,6 +99,14 @@ namespace Vect
 		cout << ret1 << " " << ret2 << " "<< ret3 << " "<<ret4 << " " <<ret5;
 
 	}
+
+	void test_ioput()
+	{
+		Vect::myString s0 = "Hello, C++";
+		cout << s0 << endl;
+		cin >> s0;
+		cout << s0 << endl;
+	}
 }
 
 int main() 
@@ -107,7 +115,7 @@ int main()
 	/*Vect::test_recursion();*/
 	/*Vect::test_insert();*/
 	/*Vect::test_find();*/
-
-	Vect::test_cmopare();
+	Vect::test_ioput();
+	/*Vect::test_cmopare();*/
 	return 0;
 }

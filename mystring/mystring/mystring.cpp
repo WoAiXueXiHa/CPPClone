@@ -2,6 +2,35 @@
 
 namespace Vect 
 {
+
+	void myString::clear()
+	{
+		_str[0] = '\0';
+		_size = 0;
+	}
+
+	istream& operator>> (istream& is, myString& str)
+	{
+		str.clear();
+		char ch = is.get();
+		while (ch != '\n' && ch != ' ')
+		{
+			str += ch;
+			ch = is.get();
+		}
+		return is;
+	}
+	ostream& operator<< (ostream& os, const myString& str)
+	{
+		for (size_t i = 0; i < str.size(); i++)
+		{
+			os << str[i];
+		}
+
+		return os;
+	}
+
+
 	const size_t myString::npos = -1;
 
 	// C格式字符串
@@ -36,7 +65,7 @@ namespace Vect
 
 
 	// 索引操作
-	size_t myString::size()
+	size_t myString::size() const
 	{
 		return _size;
 	}

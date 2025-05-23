@@ -8,6 +8,10 @@ namespace Vect
 	class myString 
 	{
 	public:
+
+		friend istream& operator>> (istream& is, myString& str);
+		friend ostream& operator<< (ostream& os, const myString& str);
+
 		// µü´úÆ÷
 		typedef char* iterator;
 		typedef const char* const_iterator;
@@ -23,7 +27,7 @@ namespace Vect
 		const char* c_str() const;
 
 		// Ë÷Òý²Ù×÷
-		size_t size();
+		size_t size() const;
 		char& operator[](size_t pos);
 		const char& operator[](size_t pos) const;
 
@@ -54,10 +58,14 @@ namespace Vect
 		bool operator<=(const myString& str)const;
 		bool operator==(const myString& str)const;
 
+		void clear();
 	private:
 		char* _str;
 		size_t _size;
 		size_t _capacity;
 		const static size_t npos;
 	};
+
+	istream& operator>> (istream& is, myString& str);
+	ostream& operator<< (ostream& os, const myString& str);
 }
