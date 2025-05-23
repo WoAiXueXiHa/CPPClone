@@ -32,7 +32,9 @@ namespace Vect
 
 		// 从pos位置开始查询指定字符，指定字符串的位置
 		size_t find(char ch, size_t pos = 0);
-		size_t find(const char* str, size_t pos = 0);
+		size_t find(const char* sub, size_t pos = 0);
+		// 从pos位置开始找len长度的子串
+		myString substr(size_t pos, size_t len);
 
 		// 插入删除操作
 		void reserve(size_t n);
@@ -45,6 +47,12 @@ namespace Vect
 		
 		myString& operator+=(char ch);
 		myString& operator+=(const char* str);
+
+		bool operator>(const myString& str)const;
+		bool operator>=(const myString& str)const;
+		bool operator<(const myString& str)const;
+		bool operator<=(const myString& str)const;
+		bool operator==(const myString& str)const;
 
 	private:
 		char* _str;

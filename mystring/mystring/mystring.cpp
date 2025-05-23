@@ -2,7 +2,7 @@
 
 namespace Vect 
 {
-	const static size_t npos = -1;
+	const size_t myString::npos = -1;
 
 	// C格式字符串
 	const char* myString::c_str() const
@@ -60,11 +60,43 @@ namespace Vect
 		}
 		return npos;
 	}
-	size_t myString::find(const char* str, size_t pos)
+	size_t myString::find(const char* sub, size_t pos)
 	{
-
+		// 在一个字符串中查找子字符串的第一次出现位置 第一个参数：要搜索的主字符串， 第二个参数：要搜索的子字符串
+		const char* tmp = strstr(_str + pos, sub);
+		if (tmp == nullptr)
+		{
+			return npos;
+		}
+		else
+		{
+			return tmp - _str;
+		}
 	}
 	
+	// 从pos位置开始找len长度的子串
+	myString myString::substr(size_t pos, size_t len) 
+	{
+		assert(pos <= _size);
+		// 要取得子串长度大于母串，有多少取多少
+		if (len - pos >= _size)
+		{
+			myString ret(_str + pos);
+			return ret;
+		}
+		else
+		{
+			myString ret;
+			ret.reserve(len);
+			for (size_t i = 0; i < len; i++)
+			{
+				ret += _str[pos + i];
+			}
+			return ret;
+		}
+	
+	}
+
 
 	// 插入删除操作
 	// 首先要判断容量够不够 我们先预留空间
@@ -175,10 +207,33 @@ namespace Vect
 		push_back(ch);
 		return *this;
 	}
+
 	myString& myString::operator+=(const char* str)
 	{
 		append(str);;
 		return *this;
+	}
+	
+	// s1.operator(s2)
+	bool myString::operator>(const myString& str)const
+	{
+		return strcmp(_str, str._str) > 0;
+	}
+	bool myString::operator>=(const myString& str)const
+	{
+		return *this > str|| *this == str;
+	}
+	bool myString:: operator< (const myString& str)const
+	{
+		return !(*this >= str);
+	}
+	bool myString::operator<=(const myString& str)const
+	{
+		return (*this < str);
+	}
+	bool myString::operator==(const myString& str)const
+	{
+		return strcmp(_str, str._str) == 0;
 	}
 }
 	
