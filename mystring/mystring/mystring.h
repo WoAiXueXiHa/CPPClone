@@ -65,7 +65,7 @@ namespace Vect
 		size_t _capacity;
 		const static size_t npos;
 	};
-
+	// 流插入和流提取
 	istream& operator>> (istream& is, myString& str);
 	ostream& operator<< (ostream& os, const myString& str);
 }

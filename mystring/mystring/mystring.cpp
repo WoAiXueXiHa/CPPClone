@@ -9,6 +9,7 @@ namespace Vect
 		_size = 0;
 	}
 
+	// 流插入和流提取
 	istream& operator>> (istream& is, myString& str)
 	{
 		str.clear();
